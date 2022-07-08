@@ -1,13 +1,25 @@
 #include "header.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-void cfunc(char *c)
+
+char* itoa(int* value, char* buffer, int base);
+
+int cfunc(int *c)
 {
 	write(1, &c, 1);
+	return(0);
 }
 
-void sfunc(char *s[])
+int sfunc(int *s)
 {
+	int n;
+	//char* convert;
+
 	for (n = 0; s[n] != '\0'; n++)
-		write(1, &s[n], 1);
+		;
+//	s = s + '0';
+//	itoa(s, convert, 16);
+	write(1, &s, n);
+	return(0);
 }

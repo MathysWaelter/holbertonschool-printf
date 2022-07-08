@@ -1,14 +1,20 @@
 #ifndef HEADER_H
 #define HEADER_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 typedef struct getdelim
 {
-	        char *delim;
-			        int (*f)(char *s);
+	char *delim;
+	int (*f)(int *s);
 } gdel;
 
-void sfunc(char *s[]);
+int sfunc(int *s);
 
-void cfunc(char *c);
+int cfunc(int *c);
 
+char* itoa(int* value, char* buffer, int base);
 #endif

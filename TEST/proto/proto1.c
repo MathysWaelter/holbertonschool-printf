@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,30 +10,40 @@ int _printf(const char *format, ...)
 		{"s", sfunc},
 		{NULL, NULL}
 	};
-	int x;
+	int count;
 	va_list flag;
+	va_list flag2;
+	int i = 0;
 
-	va_start(flag);
+	va_start(flag, format);
 
-	for (int i = 0; format[i] != '\0'; i++)
+	for (count = 0; format[count] != '\0'; count++)
 	{
-		if (format[i] == "%")
+		if (format[count] == '%')
 		{
-			while (x < 3)
+			while (i < 3)
 			{		
-				if (*(gdel[x].getdelim == format[i + 1]))
-					gdel[x].f(va_arg(flag, *char));
+				if (type[i].delim[0] == format[count + 1])
+				{
+					type[i].f(va_arg(flag, int *));
+					count++;
+					break;
+				}
+				i++;
 			}
 		}
 
 		else
-			write(1, &format[i], sizeof(char));
+			write(1, &format[count], sizeof(char));
 	}
+	va_end(flag);
 	return (0);
 }
 
 int main(void)
 {
-	_printf("Hello");
+	char *s = "School";
+
+	_printf("Hello %s\n", s);
 	return (0);
 }
