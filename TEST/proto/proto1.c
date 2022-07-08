@@ -12,7 +12,6 @@ int _printf(const char *format, ...)
 	};
 	int count;
 	va_list flag;
-	va_list flag2;
 	int i = 0;
 
 	va_start(flag, format);
@@ -34,7 +33,8 @@ int _printf(const char *format, ...)
 		}
 
 		else
-			write(1, &format[count], sizeof(char));
+			va_arg(flag, char *);
+			write(1, &format[count], sizeof(char *));
 	}
 	va_end(flag);
 	return (0);

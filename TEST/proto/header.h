@@ -15,6 +15,4 @@ typedef struct getdelim
 int sfunc(int *s);
 
 int cfunc(int *c);
-
-char* itoa(int* value, char* buffer, int base);
 #endif
