@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 
 	va_start(flag, format);
 
-	for (count = 0; format[count] != '\0'; count++, counter++)
+	for (count = 0; format[count] != '\0'; count++)
 	{
 		if (format[count] == '%')
 		{
@@ -64,6 +64,7 @@ int _printf(const char *format, ...)
 
 		else
 			write(1, &format[count], sizeof(char));
+			counter++;
 	}
 	va_end(flag);
 	return (counter);
