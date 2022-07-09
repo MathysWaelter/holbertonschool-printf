@@ -41,9 +41,6 @@ int _printf(const char *format, ...)
 	int count;
 	int counter = 0;
 	va_list flag;
-	int i = 0;
-	unsigned int z;
-	char *g;
 
 	va_start(flag, format);
 
