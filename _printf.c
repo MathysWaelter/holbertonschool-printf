@@ -63,8 +63,10 @@ int _printf(const char *format, ...)
 		}
 
 		else
+		{
 			write(1, &format[count], sizeof(char));
 			counter++;
+		}
 	}
 	va_end(flag);
 	return (counter);
