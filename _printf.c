@@ -1,51 +1,67 @@
 #include "main.h"
-
 /**
- * cfunc - function for print %c
+ * cfunc - function to print %c
  * @c: character
+ * @counter: byte's counter
  * Return: 0
  */
 
-int cfunc(int c)
+int cfunc(int c, int counter)
 {
 	write(1, &c, 1);
-	return (0);
+	counter++;
+	return (counter);
+}
+
+/**
+ * sfunc - function to print %s
+ * @s: string
+ * @counter: byte's counter
+ * Return: counter
+ */
+
+int sfunc(char *s, int counter)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++, counter++)
+		write(1, &s[i], 1);
+	return (counter);
+
 }
 
 /**
  * _printf - function to print
  * @format: input
- * Return: 0
+ * Return: counter
  */
 
 int _printf(const char *format, ...)
 {
 	int count;
+	int counter = 0;
 	va_list flag;
+	int i = 0;
+	unsigned int z;
 	char *g;
 
 	va_start(flag, format);
 
-	for (count = 0; format[count] != '\0'; count++)
+	for (count = 0; format[count] != '\0'; count++, counter++)
 	{
 		if (format[count] == '%')
 		{
 			switch (format[count + 1])
 			{
 				case 'c':
-					{
-						cfunc(va_arg(flag, int));
-						count++;
-						break;
-					}
+					counter = cfunc((va_arg(flag, int)), counter);
+					count++;
+					break;
 
 				case 's':
-					{
-						g = va_arg(flag, char*);
-						puts(g);
-						count++;
-						break;
-					}
+					counter = sfunc((va_arg(flag, char*)), counter);
+					count++;
+					break;
 			}
 		}
 
@@ -53,5 +69,5 @@ int _printf(const char *format, ...)
 			write(1, &format[count], sizeof(char));
 	}
 	va_end(flag);
-	return (0);
+	return (counter);
 }
