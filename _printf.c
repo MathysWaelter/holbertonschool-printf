@@ -1,17 +1,27 @@
 #include "main.h"
 
+/**
+ * cfunc - function for print %c
+ * @c: character
+ * Return: 0
+ */
+
 int cfunc(int c)
 {
 	write(1, &c, 1);
-	return(0);
+	return (0);
 }
+
+/**
+ * _printf - function to print
+ * @format: input
+ * Return: 0
+ */
 
 int _printf(const char *format, ...)
 {
 	int count;
 	va_list flag;
-	int i = 0;
-	unsigned int z;
 	char *g;
 
 	va_start(flag, format);
@@ -20,16 +30,22 @@ int _printf(const char *format, ...)
 	{
 		if (format[count] == '%')
 		{
-			switch(format[count +1])
+			switch (format[count + 1])
 			{
-				case 'c' : z = cfunc(va_arg(flag,int));
-						   count++;
-						   break; 
+				case 'c':
+					{
+						cfunc(va_arg(flag, int));
+						count++;
+						break;
+					}
 
-				case 's' : g = va_arg(flag, char*);
-						   puts(g);
-						   count++;
-						   break;
+				case 's':
+					{
+						g = va_arg(flag, char*);
+						puts(g);
+						count++;
+						break;
+					}
 			}
 		}
 
