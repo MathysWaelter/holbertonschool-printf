@@ -12,7 +12,7 @@
  */
 int _putchar(char c)
 {
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 /**
  * _printf - function to print all types
@@ -31,30 +31,28 @@ int _printf(const char *format, ...)
 
 	va_start(flag, format);
 	if (*format == 0)
-		return(0);
-	for (i =0; format[i] != '\0'; i++)
+		return (0);
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			for (x = 0; x < 3; x++)
-			{  
+			{
 				if (del[x].d == 0)
 				{
-					_putchar(format[i]);
-					counter++; break;
+					counter += _putchar(format[i]);
+					break;
 				}
 				else if (format[i + 1] == del[x].d)
 				{
 					counter += del[x].f(flag);
-					i++; break;
+					break;
 				}
 			}
+			i++;
 		}
 		else
-		{
-			_putchar(format[i]);
-			counter++;
-		}
+			counter += _putchar(format[i]);
 	}
 	va_end(flag);
 	return (counter);
