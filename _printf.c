@@ -41,6 +41,7 @@ int _printf(const char *format, ...)
 				if (del[x].d == 0)
 				{
 					counter += _putchar(format[i]);
+					counter += _putchar(format[i + 1]);
 					break;
 				}
 				else if (format[i + 1] == del[x].d)
