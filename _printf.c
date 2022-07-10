@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 		{'s', sfunc},
 		{0, 0}
 	};
-	int i, counter = 0;
+	int i, counter = 0, x;
 	va_list flag;
 
 	va_start(flag, format);
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			for (int x = 0; x < 3; x++)
+			for (x = 0; x < 3; x++)
 			{  
 				if (del[x].d == 0)
 				{
