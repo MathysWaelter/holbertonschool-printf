@@ -1,70 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <unistd.h>
 #include "main.h"
-/**
- * cfunc - function to print %c
- * @c: character
- * @counter: byte's counter
- * Return: 0
- */
 
-int cfunc(int c, int counter)
+/**
+ * _putchar - print function
+ * @c: imput
+ * Return: output
+ */
+int _putchar(char c)
 {
-	write(1, &c, 1);
-	counter++;
-	return (counter);
+    return (write(1, &c, 1));
 }
-
 /**
- * sfunc - function to print %s
- * @s: string
- * @counter: byte's counter
- * Return: counter
+ * _printf - function to print all types
+ * @format: imput
+ * Return: Counter.
  */
-
-int sfunc(char *s, int counter)
-{
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++, counter++)
-		write(1, &s[i], 1);
-	return (counter);
-
-}
-
-/**
- * _printf - function to print
- * @format: input
- * Return: counter
- */
-
 int _printf(const char *format, ...)
 {
-	int count;
-	int counter = 0;
+	delim del[] = {
+		{'c', cfunc},
+		{'s', sfunc},
+		{0, 0}
+	};
+	int i, counter = 0;
 	va_list flag;
 
 	va_start(flag, format);
-
-	for (count = 0; format[count] != '\0'; count++)
+	if (*format == 0)
+		return(0);
+	for (i =0; format[i] != '\0'; i++)
 	{
-		if (format[count] == '%')
+		if (format[i] == '%')
 		{
-			switch (format[count + 1])
-			{
-				case 'c':
-					counter = cfunc((va_arg(flag, int)), counter);
-					count++;
-					break;
-
-				case 's':
-					counter = sfunc((va_arg(flag, char*)), counter);
-					count++;
-					break;
+			for (int x = 0; x < 3; x++)
+			{  
+				if (del[x].d == 0)
+				{
+					_putchar(format[i]);
+					counter++; break;
+				}
+				else if (format[i + 1] == del[x].d)
+				{
+					counter += del[x].f(flag);
+					i++; break;
+				}
 			}
 		}
-
 		else
 		{
-			write(1, &format[count], sizeof(char));
+			_putchar(format[i]);
 			counter++;
 		}
 	}

@@ -7,8 +7,15 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int cfunc(int c, int counter);
-int sfunc(char *s, int counter);
+typedef struct delimitor
+{
+	char d;
+	int (*f)(va_list);
+}delim;
+
+int _putchar(char c);
+int cfunc(va_list c);
+int sfunc(va_list s);
 int _printf(const char *format, ...);
 
 #endif
