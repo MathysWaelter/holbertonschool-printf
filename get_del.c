@@ -20,13 +20,14 @@ int get_del(const char *format, delim del[], va_list flag)
 			}
 			if (x == 2)
 			{
-				if (format[i + 1] != '\0')
+				if (format[i + 1] != '\0' && format[i + 1] != '%')
 				{
 					_putchar(format[i]);
-					counter += 1;
+					_putchar(format[i + 1]);
+					counter += 2;
 				}
-				else
-					return (counter);
+				else if (format[i + 1] != '\0')
+					counter += _putchar(format[i]);
 			}
 			i++;
 		}
