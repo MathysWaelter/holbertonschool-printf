@@ -1,15 +1,15 @@
 #include "main.h"
 
-/**
- * sfunc - function to print strings
- * @s: va_list
- * Return: n
- */
+int cfunc(va_list flag)
+{
+	_putchar(va_arg(flag, int));
+	return (1);
+}
 
-int sfunc(va_list s)
+int sfunc(va_list flag)
 {
 	int i, n = 0;
-	char *arg = va_arg(s, char*);
+	char *arg = va_arg(flag, char*);
 
 	if (arg == NULL)
 	{

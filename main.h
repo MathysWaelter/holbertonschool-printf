@@ -1,21 +1,22 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
+#include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
+#include <stdarg.h>
 
 typedef struct delimitor
 {
-	char d;
+	char *d;
 	int (*f)(va_list);
-}delim;
+} delim;
 
+int cfunc(va_list flag);
+int sfunc(va_list flag);
 int _putchar(char c);
-int cfunc(va_list c);
-int sfunc(va_list s);
+int get_del(const char *format, delim del[], va_list flag);
 int _printf(const char *format, ...);
 
 #endif
