@@ -34,38 +34,38 @@ int sfunc(va_list flag)
 	return (n);
 }
 
+/**
+ * dfunc - function to print numbers
+ * @flag: va_list
+ * Return: counter
+ */
+
 int dfunc(va_list flag)
 {
-	int arg;
+	int counter;
+	int number, divisor;
+	unsigned int tmp;
 
-	arg = va_arg(flag, int);
+	divisor = 1;
+	number = va_arg(flag, int);
+	counter = 0;
 
-	if (arg < 0)
+	if (number < 0)
 	{
-		_putchar('-');
-	 	arg = -arg;
+		counter += _putchar('-');
+		tmp = number * -1;
 	}
-	else if (arg == 0)
+	else
+		tmp = number;
+
+	while (tmp / divisor > 9)
+		divisor = divisor * 10;
+
+	while (divisor != 0)
 	{
-		_putchar('0');
-		return (0);
+		counter += _putchar(tmp / divisor + '0');
+		tmp %= divisor;
+		divisor = divisor / 10;
 	}
-	while (arg != 0)
-	{
-		_putchar('0' + (arg % 10));
-		arg /= 10;
-	}
-	return (arg);
-}
-
-int printrev(va_list flag)
-{
-	int arg;
-	
-	if (arg < 0);
-
-	arg = va_arg(flag, int);
-
-	dfunc(arg);
-	return (0);
+	return (counter);
 }
