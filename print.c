@@ -33,3 +33,26 @@ int sfunc(va_list flag)
 	}
 	return (n);
 }
+
+int dfunc(va_list flag)
+{
+	int arg;
+
+	arg = va_arg(flag, int);
+
+	if (arg < 0)
+	{
+		_putchar('-');
+	 	arg = -arg;
+	}
+	else if (arg == 0)
+	{
+		_putchar('0');
+		return (0);
+	}
+	while (arg != 0)
+	{
+		_putchar('0' + (arg % 10));
+		arg /= 10;
+	}
+}

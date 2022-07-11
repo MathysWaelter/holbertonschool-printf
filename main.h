@@ -18,5 +18,6 @@ int sfunc(va_list flag);
 int _putchar(char c);
 int get_del(const char *format, delim del[], va_list flag);
 int _printf(const char *format, ...);
+int dfunc(va_list flag);
 
 #endif

@@ -17,7 +17,7 @@ int get_del(const char *format, delim del[], va_list flag)
 	{
 		if (format[i] == '%')
 		{
-			for (x = 0; x < 2; x++)
+			for (x = 0; x < 3; x++)
 			{
 				if (format[i + 1] == del[x].d[0])
 				{

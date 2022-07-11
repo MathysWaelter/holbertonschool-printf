@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	delim del[] = {
 		{"c", cfunc},
 		{"s", sfunc},
+		{"d", dfunc},
 		{0, NULL}
 	};
 
