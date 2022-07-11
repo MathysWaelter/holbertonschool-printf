@@ -55,4 +55,5 @@ int dfunc(va_list flag)
 		_putchar('0' + (arg % 10));
 		arg /= 10;
 	}
+	return (arg);
 }
