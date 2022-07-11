@@ -57,3 +57,15 @@ int dfunc(va_list flag)
 	}
 	return (arg);
 }
+
+int printrev(va_list flag)
+{
+	int arg;
+	
+	if (arg < 0);
+
+	arg = va_arg(flag, int);
+
+	dfunc(arg);
+	return (0);
+}
