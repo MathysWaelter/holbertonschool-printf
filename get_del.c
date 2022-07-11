@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * get_del - function to get delim of %
+ * @format: string
+ * @del: array of struct
+ * @flag: va_list
+ * Return: Counter
+ */
+
 int get_del(const char *format, delim del[], va_list flag)
 {
 	int i, x, counter, tmp;
@@ -28,6 +36,8 @@ int get_del(const char *format, delim del[], va_list flag)
 				}
 				else if (format[i + 1] != '\0')
 					counter += _putchar(format[i]);
+				else if (format[i + 1] == '\0')
+					return (-1);
 			}
 			i++;
 		}
