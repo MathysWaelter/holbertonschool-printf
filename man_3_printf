@@ -1,0 +1,25 @@
+.TH man 3 "12 July 2022" "0.87" "_Printf man page" 
+.SH NAME 
+_printf - print a string of different types 
+.SH SYNOPSIS 
+.B #include <unistd.h> 
+.B #include <stdarg.h> 
+Prints a formatted string to the standard output using a string with format specifiers 
+.SH DESCRIPTION 
+.PP 
+This _printf function can format a string to interpolate a Characters(specifier: %c), Strings(specifier: %s), 
+and Integers(specifiers: %d / %i). 
+.B To use a specifier please do so in this format: _printf("%s", string); -- where the format string specifies the order and operation of the arguments and how they should be outputted. 
+.I _printf can take any number of arguments. 
+.SH RETURN 
+This function returns how many characters are printed to the standard output with each call. 
+.SH FURTHER EXAMPLES 
+To print the someones name and age in a string: 
+.B printf("Hello %s, you are %d years old", name, age); 
+.I Note the respective placement of the specifiers and arguments. We can expect name to be a string and age to be an integer. 
+.SH SEE ALSO: 
+printf(3) 
+.SH AUTHORS 
+Mathys LAURENT, 
+Quentin RIO.
+
