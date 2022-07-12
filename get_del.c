@@ -17,7 +17,7 @@ int get_del(const char *format, delim del[], va_list flag)
 	{
 		if (format[i] == '%')
 		{
-			for (x = 0; x < 3; x++)
+			for (x = 0; x < 4; x++)
 			{
 				if (format[i + 1] == del[x].d[0])
 				{
@@ -26,7 +26,7 @@ int get_del(const char *format, delim del[], va_list flag)
 					break;
 				}
 			}
-			if (x == 2)
+			if (x == 4)
 			{
 				if (format[i + 1] != '\0' && format[i + 1] != '%')
 				{
